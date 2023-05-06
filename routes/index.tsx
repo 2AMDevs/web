@@ -17,6 +17,7 @@ export default function Home() {
           <br/>
           This site is `WIP` 🚧
         </pre>
+        <a href="https://github.com/2AMDevs">GitHub</a>
       </p>
     </div>
   );
