@@ -3,27 +3,37 @@
 import { motion } from "framer-motion";
 import { ArrowDown, GitBranch, Zap } from "lucide-react";
 
-export function Hero() {
+interface HeroProps {
+  repoCount?: number;
+}
+
+const stats = [
+  { label: "Projects shipped", getValue: (n: number) => `${n}+` },
+  { label: "Years building", getValue: () => `${new Date().getFullYear() - 2020}+` },
+  { label: "Lines of open source", getValue: () => "100k+" },
+];
+
+export function Hero({ repoCount = 6 }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
-      {/* Ambient background */}
+      {/* Grid background */}
       <div className="absolute inset-0 grid-bg opacity-40" />
 
-      {/* Orbs */}
+      {/* Ambient orbs */}
       <div
-        className="orb w-[600px] h-[600px] top-[-200px] left-[-200px] pulse-slow"
-        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
+        className="orb w-[700px] h-[700px] -top-48 -left-48 pulse-slow"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)" }}
       />
       <div
-        className="orb w-[500px] h-[500px] bottom-[-100px] right-[-100px] pulse-slow"
+        className="orb w-[600px] h-[600px] -bottom-24 -right-24"
         style={{
-          background: "radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 70%)",
           animationDelay: "2s",
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,11 +73,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16"
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm hover:opacity-90 active:scale-95 transition-all duration-200 shadow-lg"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm hover:opacity-90 active:scale-95 transition-all duration-200"
             style={{ boxShadow: "0 4px 24px rgba(99,102,241,0.3)" }}
           >
             View Our Work
@@ -87,6 +97,23 @@ export function Hero() {
           >
             Get in Touch
           </a>
+        </motion.div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex items-center justify-center gap-8 sm:gap-12"
+        >
+          {stats.map((stat, i) => (
+            <div key={i} className="text-center">
+              <p className="text-2xl sm:text-3xl font-bold gradient-text">
+                {stat.getValue(repoCount)}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
 

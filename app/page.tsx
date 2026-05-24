@@ -1,4 +1,4 @@
-import { getOrgRepos, getOrgMembers } from "@/lib/github";
+import { getOrgRepos, getTeamProfiles } from "@/lib/github";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -8,17 +8,17 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default async function Home() {
-  const [repos, members] = await Promise.all([
+  const [repos, team] = await Promise.all([
     getOrgRepos("2AMDevs"),
-    getOrgMembers("2AMDevs"),
+    getTeamProfiles(),
   ]);
 
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <About members={members} />
+        <Hero repoCount={repos.length} />
+        <About team={team} />
         <Projects repos={repos} />
         <UpcomingServices />
         <Contact />

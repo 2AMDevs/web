@@ -110,6 +110,20 @@ body {
 }
 .pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
 
+/* Scroll-triggered fade-in via CSS (works in all environments) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+.fade-up-delay-1 { animation-delay: 0.05s; }
+.fade-up-delay-2 { animation-delay: 0.10s; }
+.fade-up-delay-3 { animation-delay: 0.15s; }
+.fade-up-delay-4 { animation-delay: 0.20s; }
+.fade-up-delay-5 { animation-delay: 0.25s; }
+
 /* Focus ring */
 *:focus-visible {
   outline: 2px solid var(--accent);

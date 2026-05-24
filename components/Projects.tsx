@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ExternalLink, GitFork, Star, FolderGit2 } from "lucide-react";
 import type { GithubRepo } from "@/lib/github";
 
@@ -47,13 +46,7 @@ export function Projects({ repos }: ProjectsProps) {
     <section id="projects" className="relative py-28 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 fade-up">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-muted text-muted-foreground text-xs font-medium mb-6">
             <FolderGit2 className="w-3 h-3" />
             <span>Open source</span>
@@ -65,7 +58,7 @@ export function Projects({ repos }: ProjectsProps) {
           <p className="text-muted-foreground max-w-md mx-auto text-lg">
             Real projects, live on GitHub. Built late at night, refined over time.
           </p>
-        </motion.div>
+        </div>
 
         {repos.length === 0 ? (
           <div className="text-center py-16 text-muted-foreground">
@@ -83,16 +76,12 @@ export function Projects({ repos }: ProjectsProps) {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {repos.map((repo, i) => (
-              <motion.a
+              <a
                 key={repo.id}
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="glass-card rounded-2xl p-5 flex flex-col gap-3 group"
+                className={`glass-card rounded-2xl p-5 flex flex-col gap-3 group fade-up fade-up-delay-${Math.min(i + 1, 5)}`}
               >
                 {/* Repo header */}
                 <div className="flex items-start justify-between gap-2">
@@ -144,19 +133,13 @@ export function Projects({ repos }: ProjectsProps) {
                     )}
                   </div>
                 </div>
-              </motion.a>
+              </a>
             ))}
           </div>
         )}
 
         {/* View all */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center mt-10"
-        >
+        <div className="text-center mt-10 fade-up">
           <a
             href="https://github.com/2AMDevs"
             target="_blank"
@@ -166,7 +149,7 @@ export function Projects({ repos }: ProjectsProps) {
             View all repositories on GitHub
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
