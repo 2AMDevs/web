@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, Layers, Lock, Sparkles, Zap } from "lucide-react";
 
 const features = [
@@ -22,13 +21,7 @@ export function UpcomingServices() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12 fade-up">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-muted text-muted-foreground text-xs font-medium mb-6">
             <Sparkles className="w-3 h-3" />
             <span>What&apos;s next</span>
@@ -37,16 +30,10 @@ export function UpcomingServices() {
             More is{" "}
             <span className="gradient-text">coming</span>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Upright Services card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative max-w-2xl mx-auto"
-        >
+        <div className="relative max-w-2xl mx-auto fade-up fade-up-delay-1">
           <div
             className="rounded-3xl border border-accent/20 overflow-hidden"
             style={{
@@ -106,7 +93,7 @@ export function UpcomingServices() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
