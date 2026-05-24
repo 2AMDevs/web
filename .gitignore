@@ -1,35 +1,41 @@
-*.orig
-*.pyc
-*.swp
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/.cargo_home/
-/.idea/
-/.vscode/
-gclient_config.py_entries
-/gh-pages/
-/target/
-/std/hash/_wasm/target
-/tools/wpt/manifest.json
-
-# Files that help ensure VSCode can work but we don't want checked into the
-# repo
+# dependencies
 /node_modules
-/tsconfig.json
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# compiled wasm files
-std/wasi/testdata/snapshot_preview1/
+# testing
+/coverage
 
-# generated v8 coverage files
-cli/tests/.test_coverage/
+# next.js
+/.next/
+/out/
 
-# MacOS generated files
+# production
+/build
+
+# misc
 .DS_Store
-.DS_Store?
+*.pem
 
-# Flamegraphs
-/flamebench*.svg
-/flamegraph*.svg
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# WPT generated cert files
-/tools/wpt/certs/index.txt*
-/tools/wpt/certs/serial*
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
